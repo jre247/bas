@@ -1,0 +1,61 @@
+{
+  "name": "as",
+  "version": "1.0.0",
+  "description": "Ad Server",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "basho-riak-client": "^2.1.1",
+    "bluebird": "^3.3.1",
+    "callsite": "^1.0.0",
+    "colors": "^1.1.2",
+    "debug": "^2.2.0",
+    "express": "^4.13.4",
+    "http-proxy": "^1.13.2",
+    "ioredis": "^1.15.1",
+    "lodash": "^4.5.1",
+    "minimist": "^1.2.0",
+    "morgan": "^1.7.0",
+    "path-to-regexp": "^1.2.1",
+    "redis": "^2.4.2",
+    "riak-js": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "workbench:redis:local": "nodemon ./src/workbench/redis --env local",
+    "server:run": "node ./src/bin/www",
+    "server:watch:local": "nodemon ./src/bin/www --env local",
+    "server:watch:dev": "nodemon ./src/bin/www --env dev",
+    "server:watch:dev": "nodemon ./src/bin/www --env dev",
+    "server:watch:pro": "nodemon ./src/bin/www --env pro",
+    "server:debug": "node-debug ./src/bin/www --env dev",
+    "start": "npm run local",
+    "local": "npm run server:watch:local",
+    "dev": "npm run server:watch:dev",
+    "uat": "npm run server:watch:uat",
+    "pro": "npm run server:watch:pro",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:env:local": "cp ./images/local.env ./images/env.env",
+    "docker:env:dev": "cp ./images/dev.env ./images/env.env",
+    "docker:env:uat": "cp ./images/uat.env ./images/env.env",
+    "docker:env:pro": "cp ./images/pro.env ./images/env.env",
+    "docker:compose:up": "cd ./images && docker-compose up -d",
+    "docker:compose:restart": "cd ./images && docker-compose restart node01",
+    "docker:local": "npm run docker:env:local && npm run docker:compose:up",
+    "docker:dev": "npm run docker:env:dev && npm run docker:compose:up",
+    "docker:uat": "npm run docker:env:uat && npm run docker:compose:up",
+    "docker:pro": "npm run docker:env:pro && npm run docker:compose:up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrightLine-iTV/as.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrightLine-iTV/as/issues"
+  },
+  "homepage": "https://github.com/BrightLine-iTV/as#readme"
+}
